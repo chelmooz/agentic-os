@@ -2,7 +2,7 @@
 
 **Orchestrateur local (llama.cpp · Qwen3) pilotant des sub-agents OpenCode sur providers gratuits en rotation.**
 
-[Michel Husson — Marseille](https://github.com/chelmooz) · Août 2026
+
 
 ## 🎯 Vision
 
