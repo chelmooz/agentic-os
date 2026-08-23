@@ -31,6 +31,18 @@ Un orchestrateur 100 % local (serveur llama.cpp exposant une API compatible Open
 - **[docs/prompts/](./docs/prompts/)** — Prompts pour génération du code cible (Annexe D)
 
 ## 🏗️ Structure du repo
+agentic-os/
+├── BLUEPRINT.md              # Spécification architecturale (source de vérité)
+├── README.md                 # Présentation du projet
+├── .gitignore                # Protection des secrets et artefacts
+├── lab/                      # Scope courant (générateur HTML)
+├── orchestrator/             # Le BUT (scripts de contrôle)
+├── agents/                   # Organisation par domaine (file-system-first)
+├── state/                    # État partagé (fait.md, loop.md)
+├── skills/                   # Fichiers CRUD réutilisables
+├── logs/                     # Journal (ignoré par git)
+├── docs/                     # Documentation annexe
+└── config/                   # Configs générées (templates)
 # agentic-os
 agentic os sur omarchy
 # Agentic OS
