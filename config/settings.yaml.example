@@ -1,0 +1,13 @@
+# DeepSeek Harness - Cible B (assurance)
+# Template : jamais de cle en clair, uniquement via variable d'environnement
+providers:
+  deepseek:
+    api: openai-completions
+    baseURL: https://api.deepseek.com/v1
+    apiKeyEnv: DEEPSEEK_API_KEY
+    compat:
+      supportsDeveloperRole: false
+      maxTokensField: max_tokens
+    models:
+      deepseek-coder:
+        thinkingFormat: deepseek
