@@ -361,15 +361,15 @@ Constat : le banc de lab (run_agents.sh) écrit out_*.json et err_*.log, mais au
 Annexe A · Constats qualité (audit du générateur HTML)
 Table 8 — Constats qualité
 #	Élément	Verdict	Détail
-1	Export DeepSeek Harness (settings.yaml)	Conforme	Schéma llm-pi-ai identique à la doc officielle.
-2	Presets (Groq/GitHub/HF/Cohere…)	Conforme	Cohérent avec l'audit précédent.
+1	Export DeepSeek Harness (settings.yaml)Mockup — à revalider post-JSHTML actuel sans JS fonctionnel (v7 perdue). Verdict théorique, à confirmer après implémentation réelle.
+2	Presets (Groq/GitHub/HF/Cohere…)Mockup — à revalider post-JSPresets listés mais aucune validation JS effective dans le HTML actuel.
 3	Sortie JSON non forcée	Bug réel	Fences/texte → jq casse, set -e arrête tout.
 4	Rotation round-robin annoncée vs impl.	Incohérence	Boucle même ordre à chaque tâche → surcharge 1er provider.
 5	tokens_used() — budget	Approx.	length*2000 arbitraire ; usage réel non exploité.
 6	Variable penv inutilisée	Code mort	4e champ jamais lu → dépendance implicite.
 7	verify() — argument shell concaténé	Fragile	ARG_MAX ; documents concaténés sans enveloppe.
 8	Fiabilité de validation_command	Risque	Risque de condition d'arrêt toujours vraie.
-9	Health-check côté script (curl)	Correct	Pas de limite CORS côté serveur — design cohérent.
+9	Health-check côté script (curl)Mockup — à revalider post-JSDesign cohérent mais non implémenté dans le HTML actuel (pas de JS).
 Annexe B · Checklist de release
 Vérifications à exécuter avant toute publication du document, dans l'ordre :
 ●	Champs Word : F9 global (ou clic droit → Mettre à jour les champs) sur ToC et légendes — aucun champ affichant "Erreur ! Signet non défini".
@@ -525,3 +525,6 @@ Ces quatre prompts forment un ensemble cohérent et respectent intégralement le
 ●	File over App (principe n°6) : skills, mémoire et configs restent des .md ou .json manipulables par bash/python/jq. Aucun lock-in.
 ●	Adhésion à Omarchy : rich pour le terminal s'intègre dans un workflow tiling (Hyprland).
 ●	Surface d'attaque nulle : suppression des endpoints REST publics, webhooks Telegram et tokens JWT. Sécurité par isolation réseau (Docker sur 127.0.0.1).
+
+
+
