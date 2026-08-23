@@ -68,3 +68,5 @@ err_*.log
 test_output/
 coverage/
 .tox/
+
+tests/results/
