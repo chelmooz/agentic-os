@@ -1,1 +1,70 @@
 
+# ============================================
+# SECRETS & CREDENTIALS - JAMAIS COMMITTÉS
+# ============================================
+*.key
+*.pem
+*.p12
+.env
+.env.local
+.env.production
+config/opencode.json
+config/settings.yaml
+*.secret
+
+# ============================================
+# LOGS & STATE (régénérés à chaque run)
+# ============================================
+logs/*.jsonl
+logs/*.log
+!logs/.gitkeep
+state/fait.md
+state/loop.md
+!state/.gitkeep
+
+# ============================================
+# MODÈLES (trop lourds pour GitHub)
+# ============================================
+models/*.gguf
+models/*.bin
+*.gguf
+*.bin
+
+# ============================================
+# ARTEFACTS DE BUILD
+# ============================================
+build/
+dist/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.so
+*.egg
+*.egg-info/
+.venv/
+venv/
+ENV/
+
+# ============================================
+# IDE & OS
+# ============================================
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+*.bak
+*.tmp
+
+# ============================================
+# TESTS & TEMP
+# ============================================
+out_*.json
+err_*.log
+test_output/
+coverage/
+.tox/
