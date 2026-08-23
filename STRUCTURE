@@ -1,0 +1,21 @@
+
+## 🔐 Principes intangibles
+
+1. **Aucun modèle figé** : chaînes de repli par rôle
+2. **Arrêt vérifiable** : assertion bash, jamais jugement qualitatif
+3. **Raisonnement local gratuit** ; exécution cloud au strict nécessaire
+4. **Rien ne sort sans action explicite** : aucune télémétrie, clés jamais stockées
+5. **File-system-first** : config/identité en `.md`, jamais en base de données
+6. **File over App** : cerveau central partagé en markdown ouverts
+7. **Arbitrage local** : `llama-bench` + protocole, jamais leaderboard public périmé
+
+## 📝 Licence
+
+MIT (à venir — palier 5 de la feuille de route)
+
+## 🔗 Liens
+
+- **Open WebUI** : https://github.com/open-webui/open-webui
+- **llama.cpp** : https://github.com/ggml-org/llama.cpp
+- **Omarchy** : https://omarchy.org/
+- **Qwen3-Coder** : https://huggingface.co/unsloth/Qwen3-Coder-30B-A3B-Instruct-GGUF
