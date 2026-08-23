@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>OpenCode Config Generator — v8 (lab + journal.jsonl)</title>
+<style>
+body{font-family:system-ui,sans-serif;max-width:1200px;margin:20px auto;padding:20px;background:#0f172a;color:#e2e8f0}
+header{background:#1e293b;padding:20px;border-radius:8px;margin-bottom:20px;border-left:4px solid #38bdf8}
+header h1{margin:0;color:#38bdf8}
+header a{color:#94a3b8;text-decoration:none;margin-left:20px}
+section{background:#1e293b;padding:20px;border-radius:8px;margin-bottom:20px}
+h2{color:#38bdf8;border-bottom:1px solid #334155;padding-bottom:10px}
+h3{color:#fbbf24}
+input,select,textarea,button{background:#0f172a;color:#e2e8f0;border:1px solid #334155;padding:8px;border-radius:4px;font-family:inherit}
+button{cursor:pointer;background:#334155;border:1px solid #475569}
+button:hover{background:#475569}
+button.primary{background:#38bdf8;color:#0f172a;border:none;font-weight:bold}
+.badge{display:inline-block;padding:2px 8px;border-radius:4px;font-size:11px;margin-left:8px}
+.badge-warning{background:#ffa500;color:#000}
+details{margin:10px 0;padding:10px;background:#0f172a;border-radius:4px}
+summary{cursor:pointer;color:#fbbf24}
+pre{background:#0f172a;padding:15px;border-radius:4px;overflow-x:auto;border:1px solid #334155}
+code{font-family:'JetBrains Mono',monospace;font-size:13px}
+.role-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:15px 0}
+.role-card{background:#0f172a;padding:10px;border-radius:4px;border:1px solid #334155}
+.role-card h4{margin:0 0 5px 0;color:#fbbf24}
+.new-feature{border-left:4px solid #10b981;padding-left:15px}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>⚙ OpenCode Config Generator v8 · lab</h1>
+  <a href="BLUEPRINT.md" target="_blank">📘 Voir le Blueprint v4</a>
+  <span style="float:right;color:#94a3b8;font-size:13px">100 % local · localStorage · 6 rôles = enum du but</span>
+</header>
+
+<section>
+  <h2>1 · Provider</h2>
+  <p><strong>Preset</strong> (API gratuites / essai / local) : ajout d'un provider à la config.</p>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:15px 0">
+    <div><label>Identifiant (clé JSON)</label><input type="text" placeholder="groq, github..."></div>
+    <div><label>Nom affiché</label><input type="text" placeholder="Groq, GitHub Models..."></div>
+    <div><label>Base URL</label><input type="url" placeholder="https://api.groq.com/openai/v1"></div>
+    <div><label>📡 Récupérer les modèles</label><button>GET /models</button></div>
+  </div>
+  <h3>Stockage de la clé dans le JSON</h3>
+  <label><input type="radio" name="key" checked> Variable d'environnement <code>{env:...}</code> (recommandé)</label><br>
+  <label><input type="radio" name="key"> Fichier séparé <code>{file:...}</code></label><br>
+  <label><input type="radio" name="key"> ⚠ Clé en clair (visible dans Git)</label>
+</section>
+
+<section>
+  <h2>2 · Options globales</h2>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:15px">
+    <div><label>Modèle par défaut</label><select><option>small</option></select></div>
+    <div><label><input type="checkbox"> Inclure le plugin superpowers (obra/superpowers)</label></div>
+  </div>
+  <details>
+    <summary>💡 Accès natif (Zen / Copilot)</summary>
+    <p>Via <code>opencode auth login</code>.</p>
+  </details>
+  
+  <h3>🎯 Spécialité → modèles suggérés (6 rôles = enum Blueprint §1.1)</h3>
+  <div class="role-grid">
+    <div class="role-card"><h4>raisonner</h4><code>r1 | reasoner | thinking | o1 | o3</code></div>
+    <div class="role-card"><h4>planifier</h4><code>70b | 72b | 405b | command-r | 4o | instruct | large</code></div>
+    <div class="role-card"><h4>coder</h4><code>coder | code | codestral</code></div>
+    <div class="role-card"><h4>review / audit</h4><code>70b | 72b | 405b | large</code></div>
+    <div class="role-card"><h4>synthétiser</h4><code>flash | 8b | 9b | mini | small</code></div>
+    <div class="role-card"><h4>rapide</h4><code>flash | 8b | 9b | mini | fast | turbo</code></div>
+  </div>
+  
+  <h3>🔍 Auto-détection de dérive (presets)</h3>
+  <p>Ping anonyme <code>baseURL/models</code>. ⏭ gris = non concluant (CORS). ❌ rouge = URL morte. ✅ vert = vivant.</p>
+  <button>📡 Vérifier tous les presets</button>
+</section>
+
+<section>
+  <h2>3 · Providers configurés</h2>
+  <p>Coche ceux à utiliser pour le banc de lab. L'ordre coché = ordre de rotation. 💾 Persisté en localStorage (clé "ocg7").</p>
+  <button>📂 Importer opencode.json</button>
+  <button>🔄 Rafraîchir les modèles</button>
+  <button>🗑 Tout effacer</button>
+</section>
+
+<section>
+  <h2>4 · Aperçu & export config</h2>
+  <button class="primary">💾 opencode.json</button>
+  <button>🔒 Sans clés</button>
+  <button>📋 Copier</button>
+  <br><br>
+  <button class="primary">💼 Export DeepSeek Harness</button>
+  <span class="badge badge-warning">🔒 ASSURANCE (inactif)</span>
+  <button>👁 Aperçu settings.yaml</button>
+  <p style="color:#94a3b8;font-size:13px">⚠ Jamais "plain" dans Git → .gitignore.</p>
+  
+  <details>
+    <summary>ℹ Pourquoi garder cet export DSH ?</summary>
+    <p><strong>Blueprint v4 §1.3 — Transition close</strong> : Plan de migration <em>inactif</em>. Conservé à coût zéro comme assurance si OpenCode disparaît. Double cible active par principe intangible n°1.</p>
+  </details>
+</section>
+
+<section class="new-feature">
+  <h2>5 · 🧪 Banc de lab — préfiguration du but (v8 avec journal.jsonl)</h2>
+  <p>Préfigure l'architecture cible : instances <code>opencode run</code> en parallèle sur providers gratuits cochés (rotation), puis agrégation locale.</p>
+  
+  <div style="background:#064e3b;padding:10px;border-radius:4px;margin:10px 0;border-left:4px solid #10b981">
+    <strong>✨ NOUVEAU v8 — Boucle lab → but (§8.2bis Blueprint)</strong><br>
+    Le banc de lab génère désormais <code>journal.jsonl</code> à chaque appel, via l'Event capture wrapper. Sans ça, l'acquis "journal.jsonl" restait uniquement côté orchestrateur cible.
+  </div>
+  
+  <h3>Micro-tâches (une par ligne)</h3>
+  <textarea rows="5" style="width:100%" placeholder="Créer une fonction qui calcule fibonacci&#10;Écrire les tests unitaires&#10;Rédiger la documentation"></textarea>
+  
+  <h3>Modèle Ollama local pour la synthèse</h3>
+  <input type="text" value="llama3.2:3b" style="width:300px">
+  
+  <br><br>
+  <button class="primary">🎭 Générer le script</button>
+  <button>👁 Aperçu</button>
+  
+  <h3>Aperçu du run_agents.sh généré (v8)</h3>
+  <pre><code>#!/usr/bin/env bash
+# run_agents.sh — généré par le lab v8, providers cochés en rotation
+set -euo pipefail
+
+for p in "${CHECKED_PROVIDERS[@]}"; do
+  opencode run --model "$p" --format json "$TASK" \
+    > "out_${p}.json" 2> "err_${p}.log"
+  ec=$?
+  
+  # Event capture wrapper (même code que l'orchestrateur cible, §6 Blueprint)
+  jq -n --arg tid "${p}" --arg prov "${p}" --argjson ec "$ec" \
+    '{task_id:$tid, provider:$prov, status:(if $ec==0 then "ok" else "error" end), timestamp:(now|todate)}' \
+    >> journal.jsonl
+done
+
+# Synthèse locale
+ollama run "$SYNTH_MODEL" -f out_*.json</code></pre>
+</section>
+
+<footer style="text-align:center;color:#94a3b8;padding:20px;font-size:13px">
+  <p>OpenCode Config Generator v8 · lab · 100 % local · Persistance localStorage (clé "ocg7")</p>
+  <p>📘 <a href="BLUEPRINT.md" style="color:#38bdf8">Blueprint v4</a> · 📋 <a href="INSTALL.md" style="color:#38bdf8">Guide installation</a> · 📝 <a href="docs/CHEATSHEET.md" style="color:#38bdf8">Cheatsheet</a></p>
+</footer>
+
+</body>
+</html>
