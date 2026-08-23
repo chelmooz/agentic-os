@@ -5,7 +5,7 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 PROJECT_ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
 TASKS="$PROJECT_ROOT/fixtures/tasks.txt"
 JOURNAL="$PROJECT_ROOT/results/journal/journal.jsonl"
-RUN_AGENTS="$PROJECT_ROOT/../scripts/run_agents.sh"
+RUN_AGENTS="$PROJECT_ROOT/orchestrator/orchestrator.sh"
 
 mkdir -p "$(dirname "$JOURNAL")"
 rm -f "$JOURNAL"

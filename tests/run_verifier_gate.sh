@@ -8,8 +8,8 @@ VERIFIER_MODEL="${VERIFIER_MODEL:-llama3.1:8b}"
 PROMPT_FILE="$TEST_DIR/prompts/verifier_validation_command.txt"
 
 mkdir -p "$RESULTS_DIR"
-
 echo "timestamp,test_id,expected_valid,validation_command_valid,status" > "$REPORT_CSV"
 
-echo "Gate Verifier : à implémenter sur Omarchy"
+echo "GATE_VERIFIER=NOT_IMPLEMENTED"
 echo "Voir Blueprint §8.2 pt 2 pour les critères"
+exit 1

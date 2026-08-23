@@ -27,8 +27,9 @@ Ce fichier documente l'état actuel du repo pour éviter toute confusion entre s
 |---------|-------------|------|
 | opencode-generator.html | Mockup HTML/CSS statique (v7 perdue, v8 sans JS) | Bandeau MOCKUP présent, radio clé en clair désactivée, commentaire HTML ajouté |
 | BLUEPRINT.md Annexe A Table 8 | Verdicts "Conforme" partiellement théoriques | À revalider après implémentation JS du générateur |
-| tests/run_journal_gate.sh | Non exécutable | Appelle ./scripts/run_agents.sh qui n'existe pas encore (généré par prompt D.1) |
-| tests/run_all.sh | Logique à revoir | Force RELEASE=GREEN même si les sous-scripts échouent |
+| tests/run_journal_gate.sh | Corrigé (refacto KISS du 23/08) | Cible désormais orchestrator/orchestrator.sh (chemin corrigé) ; échoue explicitement tant qu'il n'existe pas |
+| tests/run_all.sh | Correct | Chaque gate échoue explicitement (exit 1) tant que non implémenté ; RELEASE=RED reflète l'état réel |
+| tests/*.sh | Corrigé (refacto KISS du 23/08) | Fins de ligne CRLF résiduelles supprimées (LF pur) ; +x appliqué |
 
 ## Prochaine étape
 
