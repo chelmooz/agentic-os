@@ -76,4 +76,4 @@ Voir [docs/ANNEXE_C_INSTALL.md](./docs/ANNEXE_C_INSTALL.md) (en cours).
 
 ## Licence
 
-MIT (à venir)
+MIT
