@@ -1,1 +1,12 @@
-
+agentic-os/
+├── BLUEPRINT.md              # Spécification architecturale (source de vérité)
+├── README.md                 # Présentation du projet
+├── .gitignore                # Protection des secrets et artefacts
+├── lab/                      # Scope courant (générateur HTML)
+├── orchestrator/             # Le BUT (scripts de contrôle)
+├── agents/                   # Organisation par domaine (file-system-first)
+├── state/                    # État partagé (fait.md, loop.md)
+├── skills/                   # Fichiers CRUD réutilisables
+├── logs/                     # Journal (ignoré par git)
+├── docs/                     # Documentation annexe
+└── config/                   # Configs générées (templates)
