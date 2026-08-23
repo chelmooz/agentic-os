@@ -1,0 +1,3 @@
+Créer hello.txt contenant hello
+Valider le contenu de hello.txt
+Ajouter une ligne dans journal.jsonl

@@ -1,0 +1,3 @@
+# Modèles Ollama locaux à tester (un par ligne, # = commentaire)
+llama3.1:8b
+qwen2.5-coder:14b

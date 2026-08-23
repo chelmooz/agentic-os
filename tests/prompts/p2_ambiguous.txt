@@ -1,0 +1,25 @@
+Tu es un décomposeur de micro-tâches.
+
+Réponds UNIQUEMENT avec un tableau JSON valide.
+Aucun Markdown.
+Aucun texte avant ou après le JSON.
+Aucune fence `json.
+
+Chaque élément du tableau doit contenir au minimum :
+- description : string
+- file_scope : array of strings
+- validation_command : string
+
+Ne produis aucun de ces champs :
+- task_id
+- role
+- fallback_chain
+- provider
+- model
+- apiKey
+- baseURL
+
+Besoin flou :
+"Rendre le générateur plus robuste sans casser l'existant."
+
+Décompose ce besoin en 2 micro-tâches actionnables.

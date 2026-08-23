@@ -1,0 +1,3 @@
+provider,model,api_env,base_url
+groq,llama-3.3-70b-versatile,GROQ_API_KEY,https://api.groq.com/openai/v1
+github,gpt-4o-mini,GITHUB_TOKEN,https://models.github.ai/inference

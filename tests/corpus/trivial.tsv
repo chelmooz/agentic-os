@@ -1,0 +1,10 @@
+trivial_01	true
+trivial_02	:
+trivial_03	echo OK
+trivial_04	test 1 -eq 1
+trivial_05	[ -e /dev/null ]
+trivial_06	pwd
+trivial_07	date
+trivial_08	hostname
+trivial_09	exit 0
+trivial_10	echo "done" && true
